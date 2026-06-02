@@ -1,31 +1,31 @@
 {
-"_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
-"meta": {
-"version": "PTDL_v2",
-"update_url": null
-},
-"exported_at": "2026-06-02T05:45:00+02:00",
-"name": "» open.mp",
-"author": "layer73",
-"description": "open.mp Multiplayer Server — AMD64",
-"features": [],
-"docker_images": {
-"openmp": "ghcr.io/layer73/yolks:openmp"
-},
-"file_denylist": [],
-"startup": "./omp-server",
-"config": {
-"files": "{}",
-"startup": "{\r\n    "done": "Started server on "\r\n}",
-"logs": "{}",
-"stop": "^C"
-},
-"scripts": {
-"installation": {
-"script": "#!/bin/bash\r\n\r\ncd /tmp || exit 1\r\n\r\nwget -O open.mp-linux-x86.tar.gz https://github.com/openmultiplayer/open.mp/releases/download/v1.5.8.3079/open.mp-linux-x86.tar.gz\r\n\r\nmkdir -p /mnt/server\r\n\r\ntar -xzf open.mp-linux-x86.tar.gz --strip-components=1 -C /mnt/server/\r\n\r\nchmod +x /mnt/server/omp-server\r\n\r\nfind /mnt/server -type f -name '*.so' -exec chmod +x {} \;\r\n\r\nchown -R root:root /mnt\r\n\r\nexport HOME=/mnt/server",
-"container": "ghcr.io/parkervcp/installers:debian",
-"entrypoint": "bash"
-}
-},
-"variables": []
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2026-06-02T05:45:00+02:00",
+    "name": "» open.mp",
+    "author": "layer73",
+    "description": "open.mp Multiplayer Server",
+    "features": [],
+    "docker_images": {
+        "openmp": "ghcr.io/layer73/yolks:openmp"
+    },
+    "file_denylist": [],
+    "startup": "./omp-server",
+    "config": {
+        "files": "{}",
+        "startup": "{\n    \"done\": \"Started server on \"\n}",
+        "logs": "{}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!/bin/bash\n\ncd /tmp || exit 1\n\nwget -O open.mp-linux-x86.tar.gz https://github.com/openmultiplayer/open.mp/releases/download/v1.5.8.3079/open.mp-linux-x86.tar.gz\n\nmkdir -p /mnt/server\n\ntar -xzf open.mp-linux-x86.tar.gz --strip-components=1 -C /mnt/server/\n\nchmod +x /mnt/server/omp-server\n\nchown -R root:root /mnt\n\nexport HOME=/mnt/server",
+            "container": "ghcr.io/parkervcp/installers:debian",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": []
 }
