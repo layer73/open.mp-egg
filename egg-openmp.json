@@ -1,5 +1,5 @@
 {
-"_comment": "Custom open.mp Egg",
+"_comment": "DO NOT EDIT: FILE GENERATED FOR OPEN.MP",
 "meta": {
 "version": "PTDL_v2",
 "update_url": null
@@ -7,7 +7,7 @@
 "exported_at": "2026-06-02T00:00:00+00:00",
 "name": "» open.mp",
 "author": "layer73",
-"description": "open.mp Multiplayer Server for Pterodactyl",
+"description": "open.mp Multiplayer Server (Linux)",
 "features": null,
 "docker_images": {
 "openmp": "ghcr.io/layer73/yolks:openmp"
@@ -16,29 +16,16 @@
 "startup": "./omp-server",
 "config": {
 "files": "{}",
-"startup": {
-"done": "Server Running"
-},
+"startup": "{"done":"Server Running"}",
 "logs": "{}",
 "stop": "^C"
 },
 "scripts": {
 "installation": {
-"script": "#!/bin/bash\n\ncd /tmp || exit 1\n\necho 'Downloading open.mp...'\n\nwget -O open.mp-linux-x86.tar.gz https://github.com/openmultiplayer/open.mp/releases/download/${OPENMP_VERSION}/open.mp-linux-x86.tar.gz\n\nmkdir -p /mnt/server\n\necho 'Extracting files...'\n\ntar -xzf open.mp-linux-x86.tar.gz --strip-components=1 -C /mnt/server/\n\nchmod +x /mnt/server/omp-server\n\nfind /mnt/server -type f -name '*.so' -exec chmod +x {} \;\n\nchown -R root:root /mnt\n\nexport HOME=/mnt/server\n\necho 'open.mp installation completed.'",
+"script": "#!/bin/bash\n\ncd /tmp || exit 1\n\necho 'Downloading open.mp...'\n\nwget -O open.mp-linux-x86.tar.gz https://github.com/openmultiplayer/open.mp/releases/download/v1.5.8.3079/open.mp-linux-x86.tar.gz\n\nmkdir -p /mnt/server\n\necho 'Extracting files...'\n\ntar -xzf open.mp-linux-x86.tar.gz --strip-components=1 -C /mnt/server/\n\nchmod +x /mnt/server/omp-server\n\nfind /mnt/server -type f -name '*.so' -exec chmod +x {} \\;\n\nchown -R root:root /mnt\n\nexport HOME=/mnt/server\n\necho 'open.mp installation completed.'",
 "container": "ghcr.io/parkervcp/installers:debian",
 "entrypoint": "bash"
 }
 },
-"variables": [
-{
-"name": "OPENMP_VERSION",
-"description": "Open.MP version",
-"env_variable": "OPENMP_VERSION",
-"default_value": "v1.5.8.3079",
-"user_viewable": true,
-"user_editable": true,
-"rules": "required|string",
-"field_type": "text"
-}
-]
+"variables": []
 }
